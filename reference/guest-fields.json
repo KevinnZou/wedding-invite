@@ -1,0 +1,7 @@
+[
+  {"name":"姓名","type":"text","description":"宾客姓名或称呼"},
+  {"name":"手机号","type":"text","style":{"type":"phone"},"description":"方便接收婚礼通知"},
+  {"name":"出席状态","type":"select","multiple":false,"options":[{"name":"欣然出席","hue":"Green","lightness":"Light"},{"name":"遗憾缺席","hue":"Gray","lightness":"Light"}]},
+  {"name":"同行人数","type":"number","style":{"type":"plain","precision":0,"percentage":false},"description":"含本人在内的总人数"},
+  {"name":"提交时间","type":"created_at","style":{"format":"yyyy/MM/dd"}}
+]

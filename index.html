@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>邹铭杰 ❤ 丁沄芷 · 婚礼邀请函</title>
+<style>
+  :root{
+    --oat:#EAE5DD;
+    --oat-deep:#E0D9CE;
+    --paper:#F4F0E9;
+    --rose:#C9A9A1;
+    --rose-soft:#DFCBC5;
+    --sage:#A9B4A2;
+    --sage-soft:#CCD3C6;
+    --mist:#A3B2BD;
+    --mist-soft:#C8D2D9;
+    --ink:#5C564E;
+    --ink-soft:#8A847B;
+    --gold:#B4A184;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;overflow:hidden;}
+  body{
+    font-family:"Songti SC","Noto Serif SC","STSong",serif;
+    background:var(--oat);
+    color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* ---------- 舞台 ---------- */
+  #stage{
+    position:relative;
+    width:100%;max-width:480px;height:100%;
+    max-height:100vh;
+    perspective:2400px;
+    background:linear-gradient(160deg,var(--oat) 0%,var(--oat-deep) 100%);
+    overflow:hidden;
+  }
+  @media(min-width:520px){
+    #stage{height:94vh;max-height:920px;box-shadow:0 30px 80px rgba(92,86,78,.28);border-radius:18px;}
+  }
+  /* 水彩晕染背景层 */
+  .wash{position:absolute;border-radius:50%;filter:blur(46px);opacity:.55;pointer-events:none;z-index:0;}
+  .wash.w1{width:340px;height:340px;top:-90px;left:-110px;background:radial-gradient(circle,var(--rose-soft) 0%,rgba(223,203,197,0) 70%);}
+  .wash.w2{width:300px;height:300px;bottom:-80px;right:-90px;background:radial-gradient(circle,var(--sage-soft) 0%,rgba(204,211,198,0) 70%);}
+  .wash.w3{width:260px;height:260px;top:38%;right:-120px;background:radial-gradient(circle,var(--mist-soft) 0%,rgba(200,210,217,0) 70%);}
+  /* 纸纹 */
+  #stage::after{
+    content:"";position:absolute;inset:0;z-index:50;pointer-events:none;opacity:.05;
+    background-image:repeating-linear-gradient(0deg,rgba(92,86,78,.6) 0 1px,transparent 1px 3px);
+    mix-blend-mode:multiply;
+  }
+  /* ---------- 书页 ---------- */
+  .page{
+    position:absolute;inset:0;
+    transform-origin:left center;
+    transform-style:preserve-3d;
+    backface-visibility:hidden;
+    transform:rotateY(-165deg);
+    z-index:1;
+    transition:transform .85s cubic-bezier(.6,.05,.3,1);
+    background:var(--paper);
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .page.current{transform:rotateY(0deg);z-index:10;}
+  .page.flipped{transform:rotateY(-165deg);z-index:20;}
+  /* 翻页时的书脊阴影 */
+  .page .spine{
+    content:"";position:absolute;top:0;bottom:0;left:0;width:26px;z-index:5;pointer-events:none;
+    background:linear-gradient(90deg,rgba(92,86,78,.16),rgba(92,86,78,0));
+    opacity:0;transition:opacity .4s;
+  }
+  .page.current .spine{opacity:1;}
+  /* ---------- 通用元素 ---------- */
+  .pad{padding:56px 38px 88px;flex:1;display:flex;flex-direction:column;position:relative;z-index:2;}
+  .kicker{
+    font-size:11px;letter-spacing:.55em;text-indent:.55em;color:var(--ink-soft);
+    text-transform:uppercase;text-align:center;
+  }
+  .kicker-en{font-family:Didot,"Playfair Display","Times New Roman",serif;font-style:italic;font-size:14px;letter-spacing:.28em;text-indent:.28em;text-transform:none;}
+  .rule{display:flex;align-items:center;gap:12px;justify-content:center;margin:16px 0;}
+  .rule::before,.rule::after{content:"";height:1px;width:56px;background:linear-gradient(90deg,transparent,var(--gold));}
+  .rule::after{background:linear-gradient(90deg,var(--gold),transparent);}
+  .rule i{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);display:block;}
+  /* 水彩叶片 SVG 定位 */
+  .leaf{position:absolute;pointer-events:none;z-index:1;opacity:.8;}
+  /* ---------- P1 封面 ---------- */
+  .cover{padding:0;background:#000;}
+  .cover .photo{position:absolute;inset:0;}
+  .cover .photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;}
+  .cover .veil{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(60,52,45,.34) 0%,rgba(60,52,45,.05) 34%,rgba(60,52,45,.08) 55%,rgba(52,45,38,.62) 100%);
+  }
+  .cover .inner{
+    position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#FAF6EF;text-align:center;padding:0 34px;
+  }
+  .cover .names{
+    font-size:44px;letter-spacing:.12em;line-height:1.5;font-weight:600;
+    text-shadow:0 2px 24px rgba(0,0,0,.35);
+  }
+  .cover .amp{display:block;font-size:20px;letter-spacing:.5em;text-indent:.5em;margin:8px 0;color:#E8D9C8;}
+  .cover .date{
+    margin-top:34px;font-family:Didot,"Times New Roman",serif;font-size:16px;letter-spacing:.42em;text-indent:.42em;
+    color:#F2E9DC;
+  }
+  .cover .en{margin-top:10px;font-style:italic;font-size:12px;letter-spacing:.3em;color:rgba(244,236,224,.85);}
+  .cover .top-badge{
+    position:absolute;top:52px;left:50%;transform:translateX(-50%);
+    font-size:12px;letter-spacing:.6em;text-indent:.6em;color:#F4EDE1;
+  }
+  .cover .top-badge::before,.cover .top-badge::after{content:"·";margin:0 10px;opacity:.7;}
+  .corner-hint{
+    position:absolute;bottom:86px;left:50%;transform:translateX(-50%);z-index:6;
+    font-size:11px;letter-spacing:.4em;text-indent:.4em;color:rgba(250,246,239,.9);
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+  }
+  .corner-hint::after{
+    content:"";width:1px;height:26px;background:linear-gradient(180deg,rgba(250,246,239,.9),transparent);
+    animation:drip 1.8s ease-in-out infinite;
+  }
+  @keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}
+  /* ---------- P2 邀请文 ---------- */
+  .invite-letter p{font-size:16px;line-height:2.3;text-align:justify;color:var(--ink);}
+  .invite-letter .big{
+    font-size:26px;letter-spacing:.35em;text-align:center;margin:10px 0 26px;color:var(--ink);font-weight:600;
+  }
+  .invite-photo{
+    margin:34px auto 0;width:64%;
+    background:#FFFDF9;padding:12px 12px 44px;
+    box-shadow:0 12px 30px rgba(92,86,78,.18);
+    transform:rotate(-2.5deg);
+    position:relative;
+  }
+  .invite-photo img{width:100%;display:block;}
+  .invite-photo figcaption{
+    position:absolute;bottom:12px;left:0;right:0;text-align:center;
+    font-style:italic;font-size:12px;color:var(--ink-soft);letter-spacing:.18em;
+  }
+  .tape{
+    position:absolute;width:78px;height:24px;top:-11px;left:50%;transform:translateX(-50%) rotate(-3deg);
+    background:rgba(201,169,161,.4);border-left:1px dashed rgba(255,255,255,.65);border-right:1px dashed rgba(255,255,255,.65);
+    backdrop-filter:blur(1px);
+  }
+  /* ---------- P3 拼贴画廊 ---------- */
+  .gallery{position:relative;flex:1;}
+  .pola{
+    position:absolute;background:#FFFDF9;padding:9px 9px 34px;
+    box-shadow:0 10px 26px rgba(92,86,78,.2);
+    transition:transform .5s;
+  }
+  .pola img{width:100%;display:block;}
+  .pola figcaption{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-style:italic;font-size:11px;color:var(--ink-soft);}
+  .pola.p1{width:47%;top:2%;left:2%;transform:rotate(-4deg);z-index:3;}
+  .pola.p2{width:44%;top:7%;right:1%;transform:rotate(3.5deg);z-index:2;}
+  .pola.p3{width:46%;top:41%;left:8%;transform:rotate(2.5deg);z-index:4;}
+  .pola.p4{width:44%;top:47%;right:4%;transform:rotate(-3deg);z-index:5;}
+  .pola.p5{width:52%;top:72%;left:24%;transform:rotate(-1.5deg);z-index:6;}
+  .pola.p1:hover,.pola.p2:hover,.pola.p3:hover,.pola.p4:hover,.pola.p5:hover{transform:rotate(0) scale(1.03);z-index:9;}
+  /* ---------- P4 婚礼信息 ---------- */
+  .date-hero{text-align:center;margin:8px 0 6px;}
+  .date-hero .num{
+    font-family:Didot,"Times New Roman",serif;font-size:58px;letter-spacing:.06em;color:var(--ink);line-height:1;
+  }
+  .date-hero .sub{margin-top:12px;font-size:15px;letter-spacing:.5em;text-indent:.5em;color:var(--ink-soft);}
+  .date-hero .cn{margin-top:6px;font-size:14px;letter-spacing:.3em;color:var(--rose);font-weight:600;}
+  .tl{margin-top:38px;position:relative;padding-left:26px;}
+  .tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--rose),var(--sage),var(--mist));opacity:.7;}
+  .tl .item{position:relative;padding:0 0 26px 14px;}
+  .tl .item:last-child{padding-bottom:0;}
+  .tl .item::before{
+    content:"";position:absolute;left:-24px;top:8px;width:9px;height:9px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--rose);
+  }
+  .tl .item:nth-child(2)::before{border-color:var(--sage);}
+  .tl .item:nth-child(3)::before{border-color:var(--mist);}
+  .tl .time{font-family:Didot,"Times New Roman",serif;font-size:24px;color:var(--ink);letter-spacing:.05em;}
+  .tl .what{font-size:15px;color:var(--ink-soft);margin-top:3px;letter-spacing:.14em;}
+  /* ---------- P5 地点 ---------- */
+  .venue-card{
+    margin-top:26px;background:rgba(255,253,249,.75);
+    border:1px solid rgba(180,161,132,.35);
+    padding:26px 24px;text-align:center;position:relative;
+  }
+  .venue-card::before,.venue-card::after{
+    content:"";position:absolute;width:22px;height:22px;border-color:var(--gold);border-style:solid;opacity:.7;
+  }
+  .venue-card::before{top:8px;left:8px;border-width:1px 0 0 1px;}
+  .venue-card::after{bottom:8px;right:8px;border-width:0 1px 1px 0;}
+  .venue-card .hall{font-size:24px;letter-spacing:.24em;font-weight:600;color:var(--ink);}
+  .venue-card .floor{font-size:14px;letter-spacing:.4em;text-indent:.4em;color:var(--rose);margin-top:8px;}
+  .venue-card .addr{font-size:13px;color:var(--ink-soft);margin-top:14px;line-height:1.9;letter-spacing:.06em;}
+  .map-btn{
+    display:inline-block;margin-top:18px;padding:10px 30px;
+    border:1px solid var(--gold);color:var(--ink);text-decoration:none;
+    font-size:13px;letter-spacing:.32em;text-indent:.32em;border-radius:2px;
+    transition:all .3s;
+  }
+  .map-btn:active{background:var(--gold);color:#fff;}
+  .routes{margin-top:26px;}
+  .routes .rt{display:flex;gap:14px;padding:13px 2px;border-bottom:1px dashed rgba(180,161,132,.4);}
+  .routes .rt:last-child{border-bottom:none;}
+  .routes .tag{
+    flex:none;width:52px;height:26px;line-height:26px;text-align:center;font-size:12px;
+    color:#fff;background:var(--sage);letter-spacing:.15em;border-radius:2px;
+  }
+  .routes .rt:nth-child(2) .tag{background:var(--mist);}
+  .routes .rt:nth-child(3) .tag{background:var(--rose);}
+  .routes .txt{font-size:13.5px;line-height:1.8;color:var(--ink);}
+  .venue-photo{margin-top:26px;height:130px;overflow:hidden;position:relative;}
+  .venue-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+  .venue-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(234,229,221,0),rgba(234,229,221,.4));}
+  /* ---------- P6 大图 ---------- */
+  .fullphoto{padding:0;background:#101010;}
+  .fullphoto .ph{position:absolute;inset:0;}
+  .fullphoto .ph img{width:100%;height:100%;object-fit:cover;}
+  .fullphoto .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,.25),rgba(20,16,12,0) 40%,rgba(20,16,12,.55) 100%);}
+  .fullphoto .quote{
+    position:absolute;left:0;right:0;bottom:110px;z-index:3;text-align:center;color:#FAF6EF;
+  }
+  .fullphoto .quote .zh{font-size:26px;letter-spacing:.4em;text-indent:.4em;text-shadow:0 2px 20px rgba(0,0,0,.4);}
+  .fullphoto .quote .en{margin-top:14px;font-style:italic;font-size:13px;letter-spacing:.24em;color:rgba(250,246,239,.85);}
+  /* ---------- P7 回执 ---------- */
+  .rsvp{text-align:center;}
+  .rsvp .thanks{font-size:16px;line-height:2.2;color:var(--ink);letter-spacing:.06em;margin-top:22px;text-align:center;}
+  .rsvp .names-sm{font-size:20px;letter-spacing:.3em;margin-top:20px;color:var(--ink);font-weight:600;}
+  .rsvp-btn{
+    display:inline-block;margin-top:34px;padding:16px 46px;
+    background:linear-gradient(135deg,var(--rose) 0%,#B99890 100%);
+    color:#FFFDF9;text-decoration:none;font-size:16px;letter-spacing:.34em;text-indent:.34em;
+    border-radius:3px;box-shadow:0 10px 26px rgba(201,169,161,.45);
+    animation:breath 2.6s ease-in-out infinite;
+  }
+  @keyframes breath{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+  .rsvp .note{margin-top:22px;font-size:12.5px;color:var(--ink-soft);line-height:2;letter-spacing:.05em;}
+  .rsvp .fin{
+    margin-top:34px;font-family:Didot,"Times New Roman",serif;font-style:italic;
+    font-size:13px;letter-spacing:.26em;color:var(--gold);
+  }
+  .rsvp-photo{
+    margin:30px auto 0;width:76%;height:150px;overflow:hidden;position:relative;border-radius:2px;
+    box-shadow:0 12px 30px rgba(92,86,78,.2);
+  }
+  .rsvp-photo img{width:100%;height:100%;object-fit:cover;object-position:center 35%;}
+  /* ---------- 导航 ---------- */
+  #nav{
+    position:absolute;bottom:0;left:0;right:0;z-index:60;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    padding:18px 0 max(20px,env(safe-area-inset-bottom));
+  }
+  #nav .dot{
+    width:7px;height:7px;border-radius:50%;background:rgba(92,86,78,.22);
+    transition:all .35s;cursor:pointer;
+  }
+  #nav .dot.on{background:var(--rose);width:22px;border-radius:4px;}
+  .arrow{
+    position:absolute;top:50%;transform:translateY(-50%);z-index:60;
+    width:40px;height:64px;display:flex;align-items:center;justify-content:center;
+    color:rgba(92,86,78,.55);cursor:pointer;user-select:none;font-size:26px;
+    font-family:Didot,serif;transition:color .3s;
+  }
+  .arrow:active{color:var(--rose);}
+  #prevArrow{left:2px;}
+  #nextArrow{right:2px;}
+  .arrow.hidden{display:none;}
+  .tapzone{position:absolute;top:0;bottom:70px;z-index:40;width:26%;}
+  .tapzone.l{left:0;}
+  .tapzone.r{right:0;}
+  /* 进场 */
+  #stage{opacity:0;animation:fadein 1.2s ease .1s forwards;}
+  @keyframes fadein{to{opacity:1}}
+  .page .inner-anim{opacity:0;transform:translateY(18px);transition:all .9s ease .35s;}
+  .page.current .inner-anim{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="wash w1"></div><div class="wash w2"></div><div class="wash w3"></div>
+
+  <!-- 第1页 · 封面 -->
+  <section class="page cover" data-idx="0">
+    <div class="photo"><img src="photos/cover.jpg" alt="封面婚纱照"></div>
+    <div class="veil"></div>
+    <div class="top-badge">婚礼邀请函</div>
+    <div class="inner">
+      <div class="names">邹铭杰<span class="amp">&amp;</span>丁沄芷</div>
+      <div class="date">2026 / 10 / 17</div>
+      <div class="en">SAVE THE DATE</div>
+    </div>
+    <div class="corner-hint">轻触翻页</div>
+  </section>
+
+  <!-- 第2页 · 邀请文 -->
+  <section class="page" data-idx="1">
+    <div class="spine"></div>
+    <div class="pad invite-letter">
+      <div class="kicker kicker-en inner-anim">We Are Getting Married</div>
+      <div class="rule inner-anim"><i></i></div>
+      <div class="inner-anim">
+        <p class="big">诚挚邀请</p>
+        <p style="text-align:center;letter-spacing:.1em;">亲爱的朋友</p>
+        <p style="margin-top:22px;">　　当你收到这份邀请，我们想与你分享一个好消息——经过一路的相知相伴，我们决定携手走进人生的新篇章。</p>
+        <p style="margin-top:14px;">　　谨定于<strong>二〇二六年十月十七日（周六）</strong>举行婚礼典礼，敬备喜宴，诚邀您携家人拨冗光临，见证我们的幸福时刻。</p>
+        <p style="text-align:right;margin-top:22px;letter-spacing:.2em;">邹铭杰 · 丁沄芷 敬邀</p>
+      </div>
+      <figure class="invite-photo inner-anim">
+        <span class="tape"></span>
+        <img src="photos/tender.jpg" alt="新人合影">
+        <figcaption>us, always</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 第3页 · 时光画廊 -->
+  <section class="page" data-idx="2">
+    <div class="spine"></div>
+    <div class="pad" style="padding:44px 26px 70px;">
+      <div class="kicker inner-anim">我 们 的 时 光</div>
+      <div class="rule inner-anim"><i></i></div>
+      <div class="gallery inner-anim">
+        <figure class="pola p1"><img src="photos/golden.jpg" alt="黄昏相拥"><figcaption>golden hour</figcaption></figure>
+        <figure class="pola p2"><img src="photos/hands.jpg" alt="海边牵手"><figcaption>hand in hand</figcaption></figure>
+        <figure class="pola p3"><img src="photos/dance.jpg" alt="廊下共舞"><figcaption>our dance</figcaption></figure>
+        <figure class="pola p4"><img src="photos/bench.jpg" alt="并肩而坐"><figcaption>side by side</figcaption></figure>
+        <figure class="pola p5"><img src="photos/ocean.jpg" alt="面朝大海"><figcaption>to the sea</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 第4页 · 婚礼安排 -->
+  <section class="page" data-idx="3">
+    <div class="spine"></div>
+    <div class="pad">
+      <div class="kicker inner-anim">婚 礼 安 排</div>
+      <div class="rule inner-anim"><i></i></div>
+      <div class="inner-anim">
+        <div class="date-hero">
+          <div class="num">10.17</div>
+          <div class="sub">二〇二七年 · 十月十七日</div>
+          <div class="cn">星 期 日</div>
+        </div>
+        <div class="tl">
+          <div class="item">
+            <div class="time">17:08</div>
+            <div class="what">迎宾签到 · 恭候光临</div>
+          </div>
+          <div class="item">
+            <div class="time">18:18</div>
+            <div class="what">婚礼仪式 · 见证幸福</div>
+          </div>
+          <div class="item">
+            <div class="time">18:38</div>
+            <div class="what">晚宴开餐 · 把酒言欢</div>
+          </div>
+        </div>
+      </div>
+      <svg class="leaf" style="bottom:70px;right:24px;width:110px;" viewBox="0 0 100 100" fill="none">
+        <path d="M50 90 C50 60 55 25 85 8 C88 40 75 75 50 90Z" fill="#A9B4A2" opacity=".35"/>
+        <path d="M50 90 C55 65 68 45 92 38 C85 65 68 82 50 90Z" fill="#C9A9A1" opacity=".3"/>
+        <path d="M52 88 C50 60 48 30 30 12 C26 42 34 72 52 88Z" fill="#A3B2BD" opacity=".28"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 第5页 · 婚礼地点 -->
+  <section class="page" data-idx="4">
+    <div class="spine"></div>
+    <div class="pad" style="padding-top:48px;">
+      <div class="kicker inner-anim">婚 礼 地 点</div>
+      <div class="rule inner-anim"><i></i></div>
+      <div class="inner-anim">
+        <div class="venue-card">
+          <div class="hall">杭州国际博览中心</div>
+          <div class="floor">4B 层 · 紫云阁</div>
+          <div class="addr">浙江省杭州市萧山区奔竞大道353号<br>（G20峰会主场馆）</div>
+          <a class="map-btn" href="https://uri.amap.com/search?keyword=%E6%9D%AD%E5%B7%9E%E5%9B%BD%E9%99%85%E5%8D%9A%E8%A7%88%E4%B8%AD%E5%BF%83" target="_blank" rel="noopener">地图导航</a>
+        </div>
+        <div class="routes">
+          <div class="rt"><span class="tag">自驾</span><span class="txt">请导航至「国际博览中心3号门」进入酒店</span></div>
+          <div class="rt"><span class="tag">地铁</span><span class="txt">请出站后，步行至博览中心7号门进入酒店</span></div>
+          <div class="rt"><span class="tag">网约车</span><span class="txt">请定位「国际博览中心」，从2号门进入酒店</span></div>
+        </div>
+        <div class="venue-photo"><img src="photos/building.jpg" alt="婚礼现场风格照"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 第6页 · 大图寄语 -->
+  <section class="page fullphoto" data-idx="5">
+    <div class="ph"><img src="photos/kiss.jpg" alt="深情一吻"></div>
+    <div class="grad"></div>
+    <div class="quote inner-anim">
+      <div class="zh">执子之手 · 与子偕老</div>
+      <div class="en">Together, for all the days to come</div>
+    </div>
+  </section>
+
+  <!-- 第7页 · 出席回执 -->
+  <section class="page" data-idx="6">
+    <div class="spine"></div>
+    <div class="pad rsvp" style="padding-top:52px;">
+      <div class="kicker inner-anim">出 席 回 执</div>
+      <div class="rule inner-anim"><i></i></div>
+      <div class="inner-anim">
+        <p class="thanks">为了更好地为您安排席位<br>请于 <strong>2026年10月1日</strong> 前告诉我们<br>您是否出席，以及同行人数</p>
+        <a class="rsvp-btn" href="https://my.feishu.cn/share/base/shrcnqzVn9K7AfLQRdl7xCBXtUh" target="_blank" rel="noopener">填写出席回执</a>
+        <p class="note">点击按钮即可填写，仅需半分钟<br>您的信息将直接同步至我们的宾客名册</p>
+        <div class="names-sm">期待您的光临</div>
+        <div class="rsvp-photo"><img src="photos/ocean.jpg" alt="面朝大海"></div>
+        <div class="fin">Zou Mingjie &amp; Ding Yunzhi · 2026.10.17</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 交互区 -->
+  <div class="tapzone l" id="tapL"></div>
+  <div class="tapzone r" id="tapR"></div>
+  <div class="arrow" id="prevArrow">‹</div>
+  <div class="arrow" id="nextArrow">›</div>
+  <nav id="nav"></nav>
+</div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage');
+  var pages=Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var nav=document.getElementById('nav');
+  var prevArrow=document.getElementById('prevArrow');
+  var nextArrow=document.getElementById('nextArrow');
+  var cur=0,busy=false;
+  var m=location.search.match(/[?&]p=(\d+)/);
+  if(m&&+m[1]>=0&&+m[1]<pages.length)cur=+m[1];
+  pages.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='dot'+(i===0?' on':'');
+    d.addEventListener('click',function(){go(i);});
+    nav.appendChild(d);
+  });
+  var dots=Array.prototype.slice.call(nav.children);
+
+  function render(){
+    pages.forEach(function(p,i){
+      p.classList.toggle('current',i===cur);
+      p.classList.toggle('flipped',i<cur);
+    });
+    dots.forEach(function(d,i){d.classList.toggle('on',i===cur);});
+    prevArrow.classList.toggle('hidden',cur===0);
+    nextArrow.classList.toggle('hidden',cur===pages.length-1);
+  }
+  function go(i){
+    if(busy||i===cur||i<0||i>=pages.length)return;
+    busy=true;
+    cur=i;render();
+    setTimeout(function(){busy=false;},900);
+  }
+  function next(){go(cur+1);}
+  function prev(){go(cur-1);}
+
+  prevArrow.addEventListener('click',prev);
+  nextArrow.addEventListener('click',next);
+  document.getElementById('tapL').addEventListener('click',prev);
+  document.getElementById('tapR').addEventListener('click',next);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown')next();
+    if(e.key==='ArrowLeft'||e.key==='PageUp')prev();
+  });
+  /* 触摸滑动 */
+  var sx=0,sy=0,tracking=false;
+  stage.addEventListener('touchstart',function(e){
+    sx=e.touches[0].clientX;sy=e.touches[0].clientY;tracking=true;
+  },{passive:true});
+  stage.addEventListener('touchend',function(e){
+    if(!tracking)return;tracking=false;
+    var dx=e.changedTouches[0].clientX-sx;
+    var dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.4){
+      dx<0?next():prev();
+    }
+  },{passive:true});
+  /* 桌面滚轮 */
+  var wheelLock=false;
+  stage.addEventListener('wheel',function(e){
+    if(Math.abs(e.deltaX)>30&&!wheelLock){e.preventDefault();wheelLock=true;e.deltaX>0?next():prev();setTimeout(function(){wheelLock=false;},900);}
+  },{passive:false});
+  render();
+})();
+</script>
+</body>
+</html>
