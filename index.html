@@ -160,10 +160,12 @@
   /* ---------- P4 婚礼安排 · 时辰时间线 ---------- */
   .tl-date{text-align:center;margin:14px 0 4px;font-size:13px;letter-spacing:.32em;text-indent:.32em;color:var(--ink-soft);}
   .tl{position:relative;margin-top:16px;}
-  .tl::before{content:"";position:absolute;left:50%;top:6px;bottom:6px;width:1px;background:rgba(180,161,132,.5);}
+  .tl::before{content:"";position:absolute;left:50%;top:8px;bottom:8px;width:1px;background:rgba(180,161,132,.5);}
+  .tl::after{content:"";position:absolute;left:50%;bottom:5px;width:7px;height:7px;margin-left:-3.5px;background:var(--gold);transform:rotate(45deg);}
   .tl-row{display:grid;grid-template-columns:1fr 46px 1fr;align-items:start;padding:14px 0;}
-  .tl-ico{grid-column:2;justify-self:center;width:40px;height:40px;color:var(--ink);display:flex;align-items:center;justify-content:center;}
-  .tl-ico svg{width:34px;height:34px;display:block;}
+  .tl-ico{grid-column:2;justify-self:center;width:40px;height:40px;color:var(--ink);display:flex;align-items:center;justify-content:center;position:relative;}
+  .tl-ico::before{content:"";position:absolute;inset:0;border:1px solid rgba(180,161,132,.55);border-radius:50%;}
+  .tl-ico svg{width:32px;height:32px;display:block;position:relative;z-index:1;}
   .tl-txt{grid-column:1;text-align:right;padding-right:12px;}
   .tl-r .tl-txt{grid-column:3;text-align:left;padding-right:0;padding-left:12px;}
   .tl-pad{grid-column:3;}
@@ -171,7 +173,7 @@
   .tl-time{font-family:Didot,"Times New Roman",serif;font-size:23px;color:var(--ink);line-height:1;letter-spacing:.02em;}
   .tl-what{margin-top:7px;font-size:14.5px;letter-spacing:.24em;color:var(--ink);}
   .tl-note{margin-top:5px;font-size:11.5px;font-style:italic;color:var(--ink-soft);letter-spacing:.14em;}
-  .couple-art{display:block;margin:18px auto 0;width:56%;mix-blend-mode:multiply;opacity:.9;pointer-events:none;}
+  .couple-art{display:block;margin:20px auto 0;width:42%;mix-blend-mode:multiply;opacity:.9;pointer-events:none;}
   /* ---------- P5 地点 ---------- */
   .venue-card{
     margin-top:16px;background:rgba(255,253,249,.75);
@@ -203,16 +205,16 @@
   .routes .rt:nth-child(2) .tag{background:var(--mist);}
   .routes .rt:nth-child(3) .tag{background:var(--rose);}
   .routes .txt{font-size:12.5px;line-height:1.6;color:var(--ink);}
-  .venue-art{
-    margin:16px auto 0;width:52%;position:relative;
-    background:#FFFDF9;padding:10px 10px 28px;
+  .venue-photo{
+    margin:16px auto 0;width:100%;position:relative;
+    background:#FFFDF9;padding:10px 10px 30px;
     box-shadow:0 12px 30px rgba(92,86,78,.2);
-    transform:rotate(-1.2deg);
+    transform:rotate(-1deg);
   }
-  .venue-art img{width:100%;height:auto;display:block;}
-  .venue-art figcaption{
-    position:absolute;bottom:7px;left:0;right:0;text-align:center;
-    font-style:italic;font-size:11px;color:var(--ink-soft);letter-spacing:.18em;
+  .venue-photo img{width:100%;height:auto;display:block;}
+  .venue-photo figcaption{
+    position:absolute;bottom:9px;left:0;right:0;text-align:center;
+    font-style:italic;font-size:12px;color:var(--ink-soft);letter-spacing:.18em;
   }
   /* ---------- P6 大图 ---------- */
   .fullphoto{padding:0;background:#101010;}
@@ -285,7 +287,7 @@
     .venue-card{margin-top:10px;padding:16px 18px;}
     .routes{margin-top:10px;}
     .routes .rt{padding:6px 2px;}
-    .venue-art{margin-top:12px;width:44%;padding:8px 8px 24px;}
+    .venue-photo{margin-top:12px;padding:8px 8px 24px;}
     .rsvp .thanks{line-height:2.05;}
     .rsvp-btn{margin-top:26px;}
     .rsvp .note{margin-top:16px;}
@@ -297,7 +299,7 @@
     .tl-row{padding:11px 0;}
     .tl-ico svg{width:30px;height:30px;}
     .tl-what{font-size:14px;}
-    .couple-art{width:48%;margin-top:16px;}
+    .couple-art{width:36%;margin-top:16px;}
   }
   /* 矮屏进一步压缩(≤740px 高,如 iPhone SE) */
   @media(max-height:740px){
@@ -313,7 +315,7 @@
     .tl-row{padding:9px 0;}
     .tl-what{font-size:13.5px;margin-top:5px;}
     .tl-note{font-size:10.5px;margin-top:4px;}
-    .couple-art{width:34%;margin-top:14px;}
+    .couple-art{width:27%;margin-top:12px;}
     .rsvp-photo{margin-top:2px;width:34%;padding:8px 8px 22px;}
     .rsvp .thanks{line-height:1.9;margin-top:14px;}
     .rsvp-btn{margin-top:18px;padding:13px 40px;}
@@ -326,16 +328,19 @@
     .routes .rt{padding:6px 2px;}
     .routes .txt{font-size:12px;}
     .map-btn{margin-top:12px;}
-    .venue-art{margin-top:8px;width:32%;padding:8px 8px 22px;}
+    .venue-photo{margin-top:8px;padding:7px 7px 22px;}
   }
-  /* 极矮屏(≤700px 高):场地画略放大一档 */
+  /* 极矮屏(≤700px 高):P5 进一步压缩以容纳横版照片 */
   @media(max-height:700px){
-    .venue-art{width:36%;}
+    .venue-card{padding:12px 14px;}
+    .map-btn{margin-top:10px;padding:8px 22px;}
+    .routes .rt{padding:5px 2px;}
+    .venue-photo{margin-top:4px;padding:5px 5px 17px;transform:rotate(0);}
   }
   /* 高屏(≥900px 高):场地画、新人简笔画放大一档 */
   @media(min-height:900px){
-    .venue-art{width:56%;margin-top:20px;}
-    .couple-art{width:60%;margin-top:22px;}
+    .venue-photo{margin-top:20px;}
+    .couple-art{width:46%;margin-top:22px;}
   }
   /* 进场 */
   #stage{opacity:0;animation:fadein 1.2s ease .1s forwards;}
@@ -433,7 +438,7 @@
             <div class="tl-pad"></div>
           </div>
         </div>
-        <img class="couple-art" src="assets/art/couple-line.jpg" alt="新人简笔画">
+        <img class="couple-art" src="assets/art/couple-line.png" alt="新人简笔画">
       </div>
     </div>
   </section>
@@ -445,7 +450,6 @@
       <div class="kicker inner-anim">婚 礼 地 点</div>
       <div class="rule inner-anim"><i></i></div>
       <div class="inner-anim">
-        <figure class="venue-art"><img src="assets/art/venue-dome.jpg" alt="会场水彩画"><figcaption>our venue</figcaption></figure>
         <div class="venue-card">
           <div class="hall">杭州国际博览中心</div>
           <div class="floor">4B 层 · 紫云阁</div>
@@ -457,6 +461,7 @@
           <div class="rt"><span class="tag">地铁</span><span class="txt">请从「博览中心7号门」步行进入</span></div>
           <div class="rt"><span class="tag">网约车</span><span class="txt">请定位「国际博览中心」2号门进入</span></div>
         </div>
+        <figure class="venue-photo"><img src="assets/art/venue-dome-wide.jpg" alt="会场水彩"><figcaption>our venue</figcaption></figure>
       </div>
     </div>
   </section>
