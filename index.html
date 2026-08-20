@@ -157,59 +157,63 @@
   .pola.p3{width:46%;top:51%;left:4%;transform:rotate(2.5deg);z-index:4;}
   .pola.p4{width:44%;top:51%;right:2%;transform:rotate(-3deg);z-index:5;}
   .pola.p1:hover,.pola.p2:hover,.pola.p3:hover,.pola.p4:hover{transform:rotate(0) scale(1.03);z-index:9;}
-  /* ---------- P4 婚礼安排 · 吉时 ---------- */
-  .date-seal{text-align:center;margin:18px 0 24px;}
-  .seal{
-    display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
-    width:134px;height:134px;border:1px solid var(--gold);
-    box-shadow:inset 0 0 0 5px var(--paper), inset 0 0 0 6px var(--gold);
-    transform:rotate(-2deg);
-  }
-  .seal-num{font-family:Didot,"Times New Roman",serif;font-size:30px;letter-spacing:.04em;color:var(--ink);line-height:1;}
-  .seal-sub{font-size:11px;letter-spacing:.5em;text-indent:.5em;color:var(--rose);}
-  .seal-cn{margin-top:16px;font-size:14px;letter-spacing:.32em;text-indent:.32em;color:var(--ink-soft);}
-  .hours{margin-top:4px;}
-  .hour{display:flex;align-items:baseline;gap:18px;padding:16px 4px;}
-  .hour + .hour{border-top:1px dashed rgba(180,161,132,.45);}
-  .h-time{flex:none;width:92px;font-family:Didot,"Times New Roman",serif;font-size:26px;letter-spacing:.03em;color:var(--ink);line-height:1;}
-  .h-what{font-size:15px;color:var(--ink);letter-spacing:.2em;}
-  .h-note{margin-top:5px;font-size:12px;font-style:italic;color:var(--ink-soft);letter-spacing:.14em;}
-  .hours-fin{margin-top:22px;text-align:center;font-family:Didot,"Times New Roman",serif;font-style:italic;font-size:13px;letter-spacing:.3em;color:var(--gold);}
-  .flourish{display:block;margin:20px auto 0;width:84px;mix-blend-mode:multiply;opacity:.85;pointer-events:none;}
+  /* ---------- P4 婚礼安排 · 时辰时间线 ---------- */
+  .tl-date{text-align:center;margin:14px 0 4px;font-size:13px;letter-spacing:.32em;text-indent:.32em;color:var(--ink-soft);}
+  .tl{position:relative;margin-top:16px;}
+  .tl::before{content:"";position:absolute;left:50%;top:6px;bottom:6px;width:1px;background:rgba(180,161,132,.5);}
+  .tl-row{display:grid;grid-template-columns:1fr 46px 1fr;align-items:start;padding:14px 0;}
+  .tl-ico{grid-column:2;justify-self:center;width:40px;height:40px;color:var(--ink);display:flex;align-items:center;justify-content:center;}
+  .tl-ico svg{width:34px;height:34px;display:block;}
+  .tl-txt{grid-column:1;text-align:right;padding-right:12px;}
+  .tl-r .tl-txt{grid-column:3;text-align:left;padding-right:0;padding-left:12px;}
+  .tl-pad{grid-column:3;}
+  .tl-r .tl-pad{grid-column:1;}
+  .tl-time{font-family:Didot,"Times New Roman",serif;font-size:23px;color:var(--ink);line-height:1;letter-spacing:.02em;}
+  .tl-what{margin-top:7px;font-size:14.5px;letter-spacing:.24em;color:var(--ink);}
+  .tl-note{margin-top:5px;font-size:11.5px;font-style:italic;color:var(--ink-soft);letter-spacing:.14em;}
+  .couple-art{display:block;margin:18px auto 0;width:56%;mix-blend-mode:multiply;opacity:.9;pointer-events:none;}
   /* ---------- P5 地点 ---------- */
   .venue-card{
     margin-top:16px;background:rgba(255,253,249,.75);
     border:1px solid rgba(180,161,132,.35);
-    padding:26px 24px;text-align:center;position:relative;
+    padding:20px 22px;text-align:center;position:relative;
   }
   .venue-card::before,.venue-card::after{
     content:"";position:absolute;width:22px;height:22px;border-color:var(--gold);border-style:solid;opacity:.7;
   }
   .venue-card::before{top:8px;left:8px;border-width:1px 0 0 1px;}
   .venue-card::after{bottom:8px;right:8px;border-width:0 1px 1px 0;}
-  .venue-card .hall{font-size:24px;letter-spacing:.24em;font-weight:600;color:var(--ink);}
-  .venue-card .floor{font-size:14px;letter-spacing:.4em;text-indent:.4em;color:var(--rose);margin-top:8px;}
-  .venue-card .addr{font-size:13px;color:var(--ink-soft);margin-top:14px;line-height:1.9;letter-spacing:.06em;}
+  .venue-card .hall{font-size:23px;letter-spacing:.24em;font-weight:600;color:var(--ink);}
+  .venue-card .floor{font-size:13px;letter-spacing:.4em;text-indent:.4em;color:var(--rose);margin-top:6px;}
+  .venue-card .addr{font-size:12px;color:var(--ink-soft);margin-top:12px;line-height:1.8;letter-spacing:.06em;}
   .map-btn{
-    display:inline-block;margin-top:18px;padding:10px 30px;
+    display:inline-block;margin-top:14px;padding:9px 26px;
     border:1px solid var(--gold);color:var(--ink);text-decoration:none;
     font-size:13px;letter-spacing:.32em;text-indent:.32em;border-radius:2px;
     transition:all .3s;
   }
   .map-btn:active{background:var(--gold);color:#fff;}
-  .routes{margin-top:20px;}
-  .routes .rt{display:flex;gap:14px;padding:11px 2px;border-bottom:1px dashed rgba(180,161,132,.4);}
+  .routes{margin-top:16px;}
+  .routes .rt{display:flex;gap:12px;padding:8px 2px;border-bottom:1px dashed rgba(180,161,132,.4);}
   .routes .rt:last-child{border-bottom:none;}
   .routes .tag{
-    flex:none;width:52px;height:26px;line-height:26px;text-align:center;font-size:12px;
+    flex:none;width:46px;height:22px;line-height:22px;text-align:center;font-size:11.5px;
     color:#fff;background:var(--sage);letter-spacing:.15em;border-radius:2px;
   }
   .routes .rt:nth-child(2) .tag{background:var(--mist);}
   .routes .rt:nth-child(3) .tag{background:var(--rose);}
-  .routes .txt{font-size:13.5px;line-height:1.8;color:var(--ink);}
-  .venue-photo{margin-top:18px;height:170px;overflow:hidden;position:relative;}
-  .venue-photo img{width:100%;height:100%;object-fit:cover;object-position:center 40%;}
-  .venue-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(234,229,221,0),rgba(234,229,221,.4));}
+  .routes .txt{font-size:12.5px;line-height:1.6;color:var(--ink);}
+  .venue-art{
+    margin:16px auto 0;width:52%;position:relative;
+    background:#FFFDF9;padding:10px 10px 28px;
+    box-shadow:0 12px 30px rgba(92,86,78,.2);
+    transform:rotate(-1.2deg);
+  }
+  .venue-art img{width:100%;height:auto;display:block;}
+  .venue-art figcaption{
+    position:absolute;bottom:7px;left:0;right:0;text-align:center;
+    font-style:italic;font-size:11px;color:var(--ink-soft);letter-spacing:.18em;
+  }
   /* ---------- P6 大图 ---------- */
   .fullphoto{padding:0;background:#101010;}
   .fullphoto .ph{position:absolute;inset:0;}
@@ -238,12 +242,12 @@
     font-size:13px;letter-spacing:.26em;color:var(--gold);
   }
   .rsvp-photo{
-    margin:26px auto 0;width:68%;height:170px;overflow:hidden;position:relative;
+    margin:4px auto 0;width:48%;position:relative;
     background:#FFFDF9;padding:10px 10px 28px;
     box-shadow:0 12px 30px rgba(92,86,78,.2);
     transform:rotate(1.2deg);
   }
-  .rsvp-photo img{width:100%;height:100%;object-fit:cover;object-position:center 35%;}
+  .rsvp-photo img{width:100%;height:auto;display:block;}
   .rsvp-photo figcaption{
     position:absolute;bottom:8px;left:0;right:0;text-align:center;
     font-style:italic;font-size:11px;color:var(--ink-soft);letter-spacing:.18em;
@@ -278,37 +282,60 @@
     /* 内容超出一屏时,页面内纵向滚动兜底 */
     .page.current{overflow-y:auto;-webkit-overflow-scrolling:touch;}
     .page[data-idx="4"] .pad{padding-top:36px;}
-    .venue-card{margin-top:10px;}
-    .routes{margin-top:14px;}
-    .routes .rt{padding:9px 2px;}
-    .venue-photo{margin-top:12px;height:140px;}
+    .venue-card{margin-top:10px;padding:16px 18px;}
+    .routes{margin-top:10px;}
+    .routes .rt{padding:6px 2px;}
+    .venue-art{margin-top:12px;width:44%;padding:8px 8px 24px;}
     .rsvp .thanks{line-height:2.05;}
     .rsvp-btn{margin-top:26px;}
     .rsvp .note{margin-top:16px;}
     .rsvp .names-sm{margin-top:14px;}
     .rsvp .fin{margin-top:26px;}
-    .rsvp-photo{margin-top:22px;width:64%;height:150px;}
+    .rsvp-photo{margin-top:2px;width:40%;padding:8px 8px 24px;}
+    .tl-date{margin:10px 0 2px;font-size:12.5px;}
+    .tl-time{font-size:21px;}
+    .tl-row{padding:11px 0;}
+    .tl-ico svg{width:30px;height:30px;}
+    .tl-what{font-size:14px;}
+    .couple-art{width:48%;margin-top:16px;}
   }
   /* 矮屏进一步压缩(≤740px 高,如 iPhone SE) */
   @media(max-height:740px){
-    .invite-letter p{font-size:14px;line-height:1.9;}
-    .invite-letter .big{font-size:22px;margin:4px 0 12px;}
-    .invite-photo{width:50%;margin-top:16px;}
-    .seal{width:112px;height:112px;}
-    .seal-num{font-size:24px;}
-    .date-seal{margin:12px 0 18px;}
-    .hour{padding:10px 4px;}
-    .h-time{font-size:23px;}
-    .hours-fin{margin-top:14px;}
-    .flourish{width:64px;margin-top:14px;}
-    .rsvp .thanks{line-height:2.0;}
-    .rsvp-photo{height:130px;}
-    .venue-card{margin-top:6px;padding:20px 22px;}
-    .routes{margin-top:10px;}
-    .routes .rt{padding:7px 2px;}
+    .invite-letter p{font-size:14px;line-height:1.85;}
+    .invite-letter .big{font-size:22px;margin:4px 0 10px;}
+    .invite-photo{width:44%;margin-top:14px;}
+    .gallery .pola.p1{width:44%;}
+    .gallery .pola.p2{width:41%;}
+    .gallery .pola.p3{width:43%;top:49%;}
+    .gallery .pola.p4{width:41%;top:49%;}
+    .tl-date{margin:8px 0 0;font-size:12px;}
+    .tl-time{font-size:19px;}
+    .tl-row{padding:9px 0;}
+    .tl-what{font-size:13.5px;margin-top:5px;}
+    .tl-note{font-size:10.5px;margin-top:4px;}
+    .couple-art{width:34%;margin-top:14px;}
+    .rsvp-photo{margin-top:2px;width:34%;padding:8px 8px 22px;}
+    .rsvp .thanks{line-height:1.9;margin-top:14px;}
+    .rsvp-btn{margin-top:18px;padding:13px 40px;}
+    .rsvp .note{margin-top:10px;line-height:1.9;}
+    .rsvp .names-sm{margin-top:10px;}
+    .rsvp .fin{margin-top:16px;}
+    .page[data-idx="6"] .pad{padding-top:36px !important;}
+    .venue-card{margin-top:8px;padding:14px 16px;}
+    .routes{margin-top:8px;}
+    .routes .rt{padding:6px 2px;}
     .routes .txt{font-size:12px;}
-    .map-btn{margin-top:14px;}
-    .venue-photo{height:104px;}
+    .map-btn{margin-top:12px;}
+    .venue-art{margin-top:8px;width:32%;padding:8px 8px 22px;}
+  }
+  /* 极矮屏(≤700px 高):场地画略放大一档 */
+  @media(max-height:700px){
+    .venue-art{width:36%;}
+  }
+  /* 高屏(≥900px 高):场地画、新人简笔画放大一档 */
+  @media(min-height:900px){
+    .venue-art{width:56%;margin-top:20px;}
+    .couple-art{width:60%;margin-top:22px;}
   }
   /* 进场 */
   #stage{opacity:0;animation:fadein 1.2s ease .1s forwards;}
@@ -342,7 +369,6 @@
       <div class="rule inner-anim"><i></i></div>
       <div class="inner-anim">
         <p class="big">诚挚邀请</p>
-        <p style="text-align:center;letter-spacing:.1em;">亲爱的朋友</p>
         <p style="margin-top:12px;">　　当你收到这份邀请，我们想与你分享一个好消息——经过一路的相知相伴，我们决定携手走进人生的新篇章。</p>
         <p style="margin-top:12px;">　　谨定于<strong>二〇二六年十月十七日（周六）</strong>举行婚礼典礼，敬备喜宴，诚邀您携家人拨冗光临，见证我们的幸福时刻。</p>
         <p style="text-align:right;margin-top:12px;letter-spacing:.2em;">邹铭杰 · 丁沄芷 敬邀</p>
@@ -377,38 +403,37 @@
       <div class="kicker inner-anim">婚 礼 安 排</div>
       <div class="rule inner-anim"><i></i></div>
       <div class="inner-anim">
-        <div class="date-seal">
-          <div class="seal">
-            <span class="seal-num">10.17</span>
-            <span class="seal-sub">星 期 六</span>
+        <div class="tl-date">二〇二六年十月十七日 · 星期六</div>
+        <div class="tl">
+          <div class="tl-row tl-l">
+            <div class="tl-txt">
+              <div class="tl-time">17:08</div>
+              <div class="tl-what">迎宾签到</div>
+              <div class="tl-note">Welcome</div>
+            </div>
+            <div class="tl-ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-45 20 20)"><path d="M18 8 H22 V26 L20 36 L18 26 Z"/></g><path d="M7 38 C11 35 13 41 17 38 C21 35 23 41 27 38"/></svg></div>
+            <div class="tl-pad"></div>
           </div>
-          <div class="seal-cn">二〇二六年十月十七日</div>
+          <div class="tl-row tl-r">
+            <div class="tl-pad"></div>
+            <div class="tl-ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-8 20 20)"><circle cx="16.5" cy="21" r="6.5"/><circle cx="23.5" cy="21" r="6.5"/></g></svg></div>
+            <div class="tl-txt">
+              <div class="tl-time">18:18</div>
+              <div class="tl-what">婚礼仪式</div>
+              <div class="tl-note">The Ceremony</div>
+            </div>
+          </div>
+          <div class="tl-row tl-l">
+            <div class="tl-txt">
+              <div class="tl-time">18:38</div>
+              <div class="tl-what">晚宴开席</div>
+              <div class="tl-note">The Wedding Feast</div>
+            </div>
+            <div class="tl-ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8 H28"/><path d="M13.5 8 C13.5 16.5 16.5 19 20 19 C23.5 19 26.5 16.5 26.5 8"/><path d="M20 19 V27"/><path d="M14.5 27 H25.5"/></svg></div>
+            <div class="tl-pad"></div>
+          </div>
         </div>
-        <div class="hours">
-          <div class="hour">
-            <div class="h-time">17:08</div>
-            <div>
-              <div class="h-what">迎宾签到 · 恭候光临</div>
-              <div class="h-note">Arrival &amp; Greeting</div>
-            </div>
-          </div>
-          <div class="hour">
-            <div class="h-time">18:18</div>
-            <div>
-              <div class="h-what">婚礼仪式 · 见证幸福</div>
-              <div class="h-note">The Ceremony</div>
-            </div>
-          </div>
-          <div class="hour">
-            <div class="h-time">18:38</div>
-            <div>
-              <div class="h-what">晚宴开餐 · 把酒言欢</div>
-              <div class="h-note">The Wedding Feast</div>
-            </div>
-          </div>
-        </div>
-        <div class="hours-fin">Auspicious hours</div>
-        <img class="flourish" src="assets/art/bot-ranunculus.jpg" alt="" role="presentation">
+        <img class="couple-art" src="assets/art/couple-line.jpg" alt="新人简笔画">
       </div>
     </div>
   </section>
@@ -420,6 +445,7 @@
       <div class="kicker inner-anim">婚 礼 地 点</div>
       <div class="rule inner-anim"><i></i></div>
       <div class="inner-anim">
+        <figure class="venue-art"><img src="assets/art/venue-dome.jpg" alt="会场水彩画"><figcaption>our venue</figcaption></figure>
         <div class="venue-card">
           <div class="hall">杭州国际博览中心</div>
           <div class="floor">4B 层 · 紫云阁</div>
@@ -427,11 +453,10 @@
           <a class="map-btn" href="https://uri.amap.com/search?keyword=%E6%9D%AD%E5%B7%9E%E5%9B%BD%E9%99%85%E5%8D%9A%E8%A7%88%E4%B8%AD%E5%BF%83" target="_blank" rel="noopener">地图导航</a>
         </div>
         <div class="routes">
-          <div class="rt"><span class="tag">自驾</span><span class="txt">请导航至「国际博览中心3号门」进入酒店</span></div>
-          <div class="rt"><span class="tag">地铁</span><span class="txt">请出站后，步行至博览中心7号门进入酒店</span></div>
-          <div class="rt"><span class="tag">网约车</span><span class="txt">请定位「国际博览中心」，从2号门进入酒店</span></div>
+          <div class="rt"><span class="tag">自驾</span><span class="txt">请导航至「国际博览中心3号门」</span></div>
+          <div class="rt"><span class="tag">地铁</span><span class="txt">请从「博览中心7号门」步行进入</span></div>
+          <div class="rt"><span class="tag">网约车</span><span class="txt">请定位「国际博览中心」2号门进入</span></div>
         </div>
-        <div class="venue-photo"><img src="assets/art/venue-dome.jpg" alt="会场水彩画"></div>
       </div>
     </div>
   </section>
@@ -453,11 +478,11 @@
       <div class="kicker inner-anim">出 席 回 执</div>
       <div class="rule inner-anim"><i></i></div>
       <div class="inner-anim">
+        <figure class="rsvp-photo"><img src="photos/ocean.jpg" alt="面朝大海"><figcaption>to the sea</figcaption></figure>
         <p class="thanks">为了更好地为您安排席位<br>请于 <strong>2026年10月1日</strong> 前告诉我们<br>您是否出席，以及同行人数</p>
         <a class="rsvp-btn" href="https://my.feishu.cn/share/base/shrcnqzVn9K7AfLQRdl7xCBXtUh" target="_blank" rel="noopener">填写出席回执</a>
         <p class="note">点击按钮即可填写，仅需半分钟<br>您的信息将直接同步至我们的宾客名册</p>
         <div class="names-sm">期待您的光临</div>
-        <div class="rsvp-photo"><img src="photos/ocean.jpg" alt="面朝大海"><figcaption>to the sea</figcaption></div>
         <div class="fin">Zou Mingjie &amp; Ding Yunzhi · 2026.10.17</div>
       </div>
     </div>
