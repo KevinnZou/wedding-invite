@@ -74,7 +74,7 @@
   }
   .page.current .spine{opacity:1;}
   /* ---------- 通用元素 ---------- */
-  .pad{padding:56px 38px 88px;flex:1;display:flex;flex-direction:column;position:relative;z-index:2;}
+  .pad{padding:48px 38px 78px;flex:1;display:flex;flex-direction:column;position:relative;z-index:2;}
   .kicker{
     font-size:11px;letter-spacing:.55em;text-indent:.55em;color:var(--ink-soft);
     text-transform:uppercase;text-align:center;
@@ -84,8 +84,6 @@
   .rule::before,.rule::after{content:"";height:1px;width:56px;background:linear-gradient(90deg,transparent,var(--gold));}
   .rule::after{background:linear-gradient(90deg,var(--gold),transparent);}
   .rule i{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);display:block;}
-  /* 水彩叶片 SVG 定位 */
-  .leaf{position:absolute;pointer-events:none;z-index:1;opacity:.8;}
   /* ---------- P1 封面 ---------- */
   .cover{padding:0;background:#000;}
   .cover .photo{position:absolute;inset:0;}
@@ -124,13 +122,13 @@
   }
   @keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}
   /* ---------- P2 邀请文 ---------- */
-  .invite-letter p{font-size:16px;line-height:2.3;text-align:justify;color:var(--ink);}
+  .invite-letter p{font-size:15px;line-height:2.0;text-align:justify;color:var(--ink);}
   .invite-letter .big{
-    font-size:26px;letter-spacing:.35em;text-align:center;margin:10px 0 26px;color:var(--ink);font-weight:600;
+    font-size:24px;letter-spacing:.35em;text-align:center;margin:4px 0 14px;color:var(--ink);font-weight:600;
   }
   .invite-photo{
-    margin:34px auto 0;width:64%;
-    background:#FFFDF9;padding:12px 12px 44px;
+    margin:22px auto 0;width:54%;
+    background:#FFFDF9;padding:12px 12px 30px;
     box-shadow:0 12px 30px rgba(92,86,78,.18);
     transform:rotate(-2.5deg);
     position:relative;
@@ -154,34 +152,34 @@
   }
   .pola img{width:100%;display:block;}
   .pola figcaption{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-style:italic;font-size:11px;color:var(--ink-soft);}
-  .pola.p1{width:47%;top:2%;left:2%;transform:rotate(-4deg);z-index:3;}
-  .pola.p2{width:44%;top:7%;right:1%;transform:rotate(3.5deg);z-index:2;}
-  .pola.p3{width:46%;top:41%;left:8%;transform:rotate(2.5deg);z-index:4;}
-  .pola.p4{width:44%;top:47%;right:4%;transform:rotate(-3deg);z-index:5;}
-  .pola.p5{width:52%;top:72%;left:24%;transform:rotate(-1.5deg);z-index:6;}
+  .pola.p1{width:46%;top:2%;left:2%;transform:rotate(-4deg);z-index:3;}
+  .pola.p2{width:42%;top:6%;right:1%;transform:rotate(3.5deg);z-index:2;}
+  .pola.p3{width:45%;top:36%;left:6%;transform:rotate(2.5deg);z-index:4;}
+  .pola.p4{width:42%;top:43%;right:3%;transform:rotate(-3deg);z-index:5;}
+  .pola.p5{width:44%;top:60%;left:26%;transform:rotate(-1.5deg);z-index:6;}
   .pola.p1:hover,.pola.p2:hover,.pola.p3:hover,.pola.p4:hover,.pola.p5:hover{transform:rotate(0) scale(1.03);z-index:9;}
-  /* ---------- P4 婚礼信息 ---------- */
-  .date-hero{text-align:center;margin:8px 0 6px;}
-  .date-hero .num{
-    font-family:Didot,"Times New Roman",serif;font-size:58px;letter-spacing:.06em;color:var(--ink);line-height:1;
+  /* ---------- P4 婚礼安排 · 吉时 ---------- */
+  .date-seal{text-align:center;margin:22px 0 30px;}
+  .seal{
+    display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
+    width:134px;height:134px;border:1px solid var(--gold);
+    box-shadow:inset 0 0 0 5px var(--paper), inset 0 0 0 6px var(--gold);
+    transform:rotate(-2deg);
   }
-  .date-hero .sub{margin-top:12px;font-size:15px;letter-spacing:.5em;text-indent:.5em;color:var(--ink-soft);}
-  .date-hero .cn{margin-top:6px;font-size:14px;letter-spacing:.3em;color:var(--rose);font-weight:600;}
-  .tl{margin-top:38px;position:relative;padding-left:26px;}
-  .tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--rose),var(--sage),var(--mist));opacity:.7;}
-  .tl .item{position:relative;padding:0 0 26px 14px;}
-  .tl .item:last-child{padding-bottom:0;}
-  .tl .item::before{
-    content:"";position:absolute;left:-24px;top:8px;width:9px;height:9px;border-radius:50%;
-    background:var(--paper);border:2px solid var(--rose);
-  }
-  .tl .item:nth-child(2)::before{border-color:var(--sage);}
-  .tl .item:nth-child(3)::before{border-color:var(--mist);}
-  .tl .time{font-family:Didot,"Times New Roman",serif;font-size:24px;color:var(--ink);letter-spacing:.05em;}
-  .tl .what{font-size:15px;color:var(--ink-soft);margin-top:3px;letter-spacing:.14em;}
+  .seal-num{font-family:Didot,"Times New Roman",serif;font-size:30px;letter-spacing:.04em;color:var(--ink);line-height:1;}
+  .seal-sub{font-size:11px;letter-spacing:.5em;text-indent:.5em;color:var(--rose);}
+  .seal-cn{margin-top:16px;font-size:14px;letter-spacing:.32em;text-indent:.32em;color:var(--ink-soft);}
+  .hours{margin-top:4px;}
+  .hour{display:flex;align-items:baseline;gap:18px;padding:18px 4px;}
+  .hour + .hour{border-top:1px dashed rgba(180,161,132,.45);}
+  .h-time{flex:none;width:92px;font-family:Didot,"Times New Roman",serif;font-size:26px;letter-spacing:.03em;color:var(--ink);line-height:1;}
+  .h-what{font-size:15px;color:var(--ink);letter-spacing:.2em;}
+  .h-note{margin-top:5px;font-size:12px;font-style:italic;color:var(--ink-soft);letter-spacing:.14em;}
+  .hours-fin{margin-top:30px;text-align:center;font-family:Didot,"Times New Roman",serif;font-style:italic;font-size:13px;letter-spacing:.3em;color:var(--gold);}
+  .flourish{display:block;margin:32px auto 0;width:96px;mix-blend-mode:multiply;opacity:.85;pointer-events:none;}
   /* ---------- P5 地点 ---------- */
   .venue-card{
-    margin-top:26px;background:rgba(255,253,249,.75);
+    margin-top:16px;background:rgba(255,253,249,.75);
     border:1px solid rgba(180,161,132,.35);
     padding:26px 24px;text-align:center;position:relative;
   }
@@ -200,8 +198,8 @@
     transition:all .3s;
   }
   .map-btn:active{background:var(--gold);color:#fff;}
-  .routes{margin-top:26px;}
-  .routes .rt{display:flex;gap:14px;padding:13px 2px;border-bottom:1px dashed rgba(180,161,132,.4);}
+  .routes{margin-top:20px;}
+  .routes .rt{display:flex;gap:14px;padding:11px 2px;border-bottom:1px dashed rgba(180,161,132,.4);}
   .routes .rt:last-child{border-bottom:none;}
   .routes .tag{
     flex:none;width:52px;height:26px;line-height:26px;text-align:center;font-size:12px;
@@ -210,7 +208,7 @@
   .routes .rt:nth-child(2) .tag{background:var(--mist);}
   .routes .rt:nth-child(3) .tag{background:var(--rose);}
   .routes .txt{font-size:13.5px;line-height:1.8;color:var(--ink);}
-  .venue-photo{margin-top:26px;height:130px;overflow:hidden;position:relative;}
+  .venue-photo{margin-top:18px;height:118px;overflow:hidden;position:relative;}
   .venue-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
   .venue-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(234,229,221,0),rgba(234,229,221,.4));}
   /* ---------- P6 大图 ---------- */
@@ -269,6 +267,28 @@
   .tapzone{position:absolute;top:0;bottom:70px;z-index:40;width:26%;}
   .tapzone.l{left:0;}
   .tapzone.r{right:0;}
+  /* 矮屏适配(≤740px 高,如 iPhone SE) */
+  @media(max-height:740px){
+    /* 矮屏内容超出一屏时,页面内纵向滚动兜底 */
+    .page.current{overflow-y:auto;-webkit-overflow-scrolling:touch;}
+    .invite-letter p{font-size:14px;line-height:1.9;}
+    .invite-letter .big{font-size:22px;margin:4px 0 12px;}
+    .invite-photo{width:50%;margin-top:16px;}
+    .pola.p3{top:33%;}
+    .pola.p4{top:40%;}
+    .pola.p5{top:56%;}
+    .venue-photo{height:100px;}
+    .routes .txt{font-size:12.5px;}
+    .seal{width:112px;height:112px;}
+    .seal-num{font-size:24px;}
+    .date-seal{margin:12px 0 18px;}
+    .hour{padding:10px 4px;}
+    .h-time{font-size:23px;}
+    .hours-fin{margin-top:14px;}
+    .flourish{width:72px;margin-top:18px;}
+    .rsvp .thanks{line-height:2.0;}
+    .rsvp-photo{height:118px;}
+  }
   /* 进场 */
   #stage{opacity:0;animation:fadein 1.2s ease .1s forwards;}
   @keyframes fadein{to{opacity:1}}
@@ -302,9 +322,9 @@
       <div class="inner-anim">
         <p class="big">诚挚邀请</p>
         <p style="text-align:center;letter-spacing:.1em;">亲爱的朋友</p>
-        <p style="margin-top:22px;">　　当你收到这份邀请，我们想与你分享一个好消息——经过一路的相知相伴，我们决定携手走进人生的新篇章。</p>
-        <p style="margin-top:14px;">　　谨定于<strong>二〇二六年十月十七日（周六）</strong>举行婚礼典礼，敬备喜宴，诚邀您携家人拨冗光临，见证我们的幸福时刻。</p>
-        <p style="text-align:right;margin-top:22px;letter-spacing:.2em;">邹铭杰 · 丁沄芷 敬邀</p>
+        <p style="margin-top:12px;">　　当你收到这份邀请，我们想与你分享一个好消息——经过一路的相知相伴，我们决定携手走进人生的新篇章。</p>
+        <p style="margin-top:12px;">　　谨定于<strong>二〇二六年十月十七日（周六）</strong>举行婚礼典礼，敬备喜宴，诚邀您携家人拨冗光临，见证我们的幸福时刻。</p>
+        <p style="text-align:right;margin-top:12px;letter-spacing:.2em;">邹铭杰 · 丁沄芷 敬邀</p>
       </div>
       <figure class="invite-photo inner-anim">
         <span class="tape"></span>
@@ -330,38 +350,46 @@
     </div>
   </section>
 
-  <!-- 第4页 · 婚礼安排 -->
+  <!-- 第4页 · 婚礼安排 · 吉时 -->
   <section class="page" data-idx="3">
     <div class="spine"></div>
     <div class="pad">
       <div class="kicker inner-anim">婚 礼 安 排</div>
       <div class="rule inner-anim"><i></i></div>
       <div class="inner-anim">
-        <div class="date-hero">
-          <div class="num">10.17</div>
-          <div class="sub">二〇二七年 · 十月十七日</div>
-          <div class="cn">星 期 日</div>
+        <div class="date-seal">
+          <div class="seal">
+            <span class="seal-num">10.17</span>
+            <span class="seal-sub">星 期 六</span>
+          </div>
+          <div class="seal-cn">二〇二六年十月十七日</div>
         </div>
-        <div class="tl">
-          <div class="item">
-            <div class="time">17:08</div>
-            <div class="what">迎宾签到 · 恭候光临</div>
+        <div class="hours">
+          <div class="hour">
+            <div class="h-time">17:08</div>
+            <div>
+              <div class="h-what">迎宾签到 · 恭候光临</div>
+              <div class="h-note">Arrival &amp; Greeting</div>
+            </div>
           </div>
-          <div class="item">
-            <div class="time">18:18</div>
-            <div class="what">婚礼仪式 · 见证幸福</div>
+          <div class="hour">
+            <div class="h-time">18:18</div>
+            <div>
+              <div class="h-what">婚礼仪式 · 见证幸福</div>
+              <div class="h-note">The Ceremony</div>
+            </div>
           </div>
-          <div class="item">
-            <div class="time">18:38</div>
-            <div class="what">晚宴开餐 · 把酒言欢</div>
+          <div class="hour">
+            <div class="h-time">18:38</div>
+            <div>
+              <div class="h-what">晚宴开餐 · 把酒言欢</div>
+              <div class="h-note">The Wedding Feast</div>
+            </div>
           </div>
         </div>
+        <div class="hours-fin">Auspicious hours</div>
+        <img class="flourish" src="assets/art/bot-ranunculus.jpg" alt="" role="presentation">
       </div>
-      <svg class="leaf" style="bottom:70px;right:24px;width:110px;" viewBox="0 0 100 100" fill="none">
-        <path d="M50 90 C50 60 55 25 85 8 C88 40 75 75 50 90Z" fill="#A9B4A2" opacity=".35"/>
-        <path d="M50 90 C55 65 68 45 92 38 C85 65 68 82 50 90Z" fill="#C9A9A1" opacity=".3"/>
-        <path d="M52 88 C50 60 48 30 30 12 C26 42 34 72 52 88Z" fill="#A3B2BD" opacity=".28"/>
-      </svg>
     </div>
   </section>
 
