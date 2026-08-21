@@ -165,21 +165,6 @@
     background-position:center calc(100% - 64px);
     background-size:100% auto;
   }
-  .tl-date{text-align:center;margin:14px 0 4px;font-size:13px;letter-spacing:.32em;text-indent:.32em;color:var(--ink-soft);}
-  .tl{position:relative;margin-top:16px;}
-  .tl::before{content:"";position:absolute;left:50%;top:8px;bottom:8px;width:1px;background:rgba(180,161,132,.5);}
-  .tl::after{content:"";position:absolute;left:50%;bottom:5px;width:7px;height:7px;margin-left:-3.5px;background:var(--gold);transform:rotate(45deg);}
-  .tl-row{display:grid;grid-template-columns:1fr 46px 1fr;align-items:start;padding:14px 0;}
-  .tl-ico{grid-column:2;justify-self:center;width:40px;height:40px;color:var(--ink);display:flex;align-items:center;justify-content:center;position:relative;}
-  .tl-ico::before{content:"";position:absolute;inset:0;border:1px solid rgba(180,161,132,.55);border-radius:50%;}
-  .tl-ico svg{width:32px;height:32px;display:block;position:relative;z-index:1;}
-  .tl-txt{grid-column:1;text-align:right;padding-right:12px;}
-  .tl-r .tl-txt{grid-column:3;text-align:left;padding-right:0;padding-left:12px;}
-  .tl-pad{grid-column:3;}
-  .tl-r .tl-pad{grid-column:1;}
-  .tl-time{font-family:Didot,"Times New Roman",serif;font-size:23px;color:var(--ink);line-height:1;letter-spacing:.02em;}
-  .tl-what{margin-top:7px;font-size:14.5px;letter-spacing:.24em;color:var(--ink);}
-  .tl-note{margin-top:5px;font-size:11.5px;font-style:italic;color:var(--ink-soft);letter-spacing:.14em;}
   /* ---------- P5 地点 ---------- */
   .venue-card{
     margin-top:16px;background:rgba(255,253,249,.75);
@@ -300,11 +285,6 @@
     .rsvp .names-sm{margin-top:14px;}
     .rsvp .fin{margin-top:26px;}
     .rsvp-photo{margin-top:2px;width:40%;padding:8px 8px 24px;}
-    .tl-date{margin:10px 0 2px;font-size:12.5px;}
-    .tl-time{font-size:21px;}
-    .tl-row{padding:11px 0;}
-    .tl-ico svg{width:30px;height:30px;}
-    .tl-what{font-size:14px;}
   }
   /* 矮屏进一步压缩(≤740px 高,如 iPhone SE) */
   @media(max-height:740px){
@@ -315,11 +295,6 @@
     .gallery .pola.p2{width:41%;}
     .gallery .pola.p3{width:43%;top:49%;}
     .gallery .pola.p4{width:41%;top:49%;}
-    .tl-date{margin:8px 0 0;font-size:12px;}
-    .tl-time{font-size:19px;}
-    .tl-row{padding:9px 0;}
-    .tl-what{font-size:13.5px;margin-top:5px;}
-    .tl-note{font-size:10.5px;margin-top:4px;}
     .rsvp-photo{margin-top:2px;width:34%;padding:8px 8px 22px;}
     .rsvp .thanks{line-height:1.9;margin-top:14px;}
     .rsvp-btn{margin-top:18px;padding:13px 40px;}
@@ -404,44 +379,12 @@
     </div>
   </section>
 
-  <!-- 第4页 · 婚礼安排 · 吉时 -->
+  <!-- 第4页 · 婚礼安排 · 吉时(流程内容在背景插画内) -->
   <section class="page" data-idx="3">
     <div class="spine"></div>
     <div class="pad">
       <div class="kicker inner-anim">婚 礼 安 排</div>
       <div class="rule inner-anim"><i></i></div>
-      <div class="inner-anim">
-        <div class="tl-date">二〇二六年十月十七日 · 星期六</div>
-        <div class="tl">
-          <div class="tl-row tl-l">
-            <div class="tl-txt">
-              <div class="tl-time">17:08</div>
-              <div class="tl-what">迎宾签到</div>
-              <div class="tl-note">Welcome</div>
-            </div>
-            <div class="tl-ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-45 20 20)"><path d="M18 8 H22 V26 L20 36 L18 26 Z"/></g><path d="M7 38 C11 35 13 41 17 38 C21 35 23 41 27 38"/></svg></div>
-            <div class="tl-pad"></div>
-          </div>
-          <div class="tl-row tl-r">
-            <div class="tl-pad"></div>
-            <div class="tl-ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-8 20 20)"><circle cx="16.5" cy="21" r="6.5"/><circle cx="23.5" cy="21" r="6.5"/></g></svg></div>
-            <div class="tl-txt">
-              <div class="tl-time">18:18</div>
-              <div class="tl-what">婚礼仪式</div>
-              <div class="tl-note">The Ceremony</div>
-            </div>
-          </div>
-          <div class="tl-row tl-l">
-            <div class="tl-txt">
-              <div class="tl-time">18:38</div>
-              <div class="tl-what">晚宴开席</div>
-              <div class="tl-note">The Wedding Feast</div>
-            </div>
-            <div class="tl-ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8 H28"/><path d="M13.5 8 C13.5 16.5 16.5 19 20 19 C23.5 19 26.5 16.5 26.5 8"/><path d="M20 19 V27"/><path d="M14.5 27 H25.5"/></svg></div>
-            <div class="tl-pad"></div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -473,7 +416,7 @@
     <div class="ph"><img src="photos/kiss.jpg" alt="深情一吻"></div>
     <div class="grad"></div>
     <div class="quote inner-anim">
-      <div class="zh">喜今日 共余生</div>
+      <div class="zh">喜今日 · 共余生</div>
       <div class="en">Rejoice today, together for a lifetime</div>
     </div>
   </section>
