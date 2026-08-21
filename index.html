@@ -158,6 +158,13 @@
   .pola.p4{width:44%;top:51%;right:2%;transform:rotate(-3deg);z-index:5;}
   .pola.p1:hover,.pola.p2:hover,.pola.p3:hover,.pola.p4:hover{transform:rotate(0) scale(1.03);z-index:9;}
   /* ---------- P4 婚礼安排 · 时辰时间线 ---------- */
+  /* 整页背景插画(新人手绘 P4.png),底部小人锚在导航上方 */
+  .page[data-idx="3"]{
+    background-image:url("assets/art/p4-bg.jpg");
+    background-repeat:no-repeat;
+    background-position:center calc(100% - 64px);
+    background-size:100% auto;
+  }
   .tl-date{text-align:center;margin:14px 0 4px;font-size:13px;letter-spacing:.32em;text-indent:.32em;color:var(--ink-soft);}
   .tl{position:relative;margin-top:16px;}
   .tl::before{content:"";position:absolute;left:50%;top:8px;bottom:8px;width:1px;background:rgba(180,161,132,.5);}
@@ -173,7 +180,6 @@
   .tl-time{font-family:Didot,"Times New Roman",serif;font-size:23px;color:var(--ink);line-height:1;letter-spacing:.02em;}
   .tl-what{margin-top:7px;font-size:14.5px;letter-spacing:.24em;color:var(--ink);}
   .tl-note{margin-top:5px;font-size:11.5px;font-style:italic;color:var(--ink-soft);letter-spacing:.14em;}
-  .couple-art{display:block;margin:20px auto 0;width:42%;mix-blend-mode:multiply;opacity:.9;pointer-events:none;}
   /* ---------- P5 地点 ---------- */
   .venue-card{
     margin-top:16px;background:rgba(255,253,249,.75);
@@ -299,7 +305,6 @@
     .tl-row{padding:11px 0;}
     .tl-ico svg{width:30px;height:30px;}
     .tl-what{font-size:14px;}
-    .couple-art{width:36%;margin-top:16px;}
   }
   /* 矮屏进一步压缩(≤740px 高,如 iPhone SE) */
   @media(max-height:740px){
@@ -315,7 +320,6 @@
     .tl-row{padding:9px 0;}
     .tl-what{font-size:13.5px;margin-top:5px;}
     .tl-note{font-size:10.5px;margin-top:4px;}
-    .couple-art{width:27%;margin-top:12px;}
     .rsvp-photo{margin-top:2px;width:34%;padding:8px 8px 22px;}
     .rsvp .thanks{line-height:1.9;margin-top:14px;}
     .rsvp-btn{margin-top:18px;padding:13px 40px;}
@@ -340,7 +344,6 @@
   /* 高屏(≥900px 高):场地画、新人简笔画放大一档 */
   @media(min-height:900px){
     .venue-photo{margin-top:20px;}
-    .couple-art{width:46%;margin-top:22px;}
   }
   /* 进场 */
   #stage{opacity:0;animation:fadein 1.2s ease .1s forwards;}
@@ -438,7 +441,6 @@
             <div class="tl-pad"></div>
           </div>
         </div>
-        <img class="couple-art" src="assets/art/couple-line.png" alt="新人简笔画">
       </div>
     </div>
   </section>
@@ -471,8 +473,8 @@
     <div class="ph"><img src="photos/kiss.jpg" alt="深情一吻"></div>
     <div class="grad"></div>
     <div class="quote inner-anim">
-      <div class="zh">执子之手 · 与子偕老</div>
-      <div class="en">Together, for all the days to come</div>
+      <div class="zh">喜今日 共余生</div>
+      <div class="en">Rejoice today, together for a lifetime</div>
     </div>
   </section>
 
