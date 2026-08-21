@@ -122,27 +122,74 @@
   }
   @keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}
   /* ---------- P2 邀请文 ---------- */
-  .invite-letter p{font-size:15px;line-height:2.0;text-align:justify;color:var(--ink);}
-  .invite-letter .big{
-    font-size:24px;letter-spacing:.35em;text-align:center;margin:4px 0 14px;color:var(--ink);font-weight:600;
+  .invite-page{
+    background:
+      linear-gradient(180deg,rgba(251,248,242,.68),rgba(240,233,222,.36)),
+      repeating-linear-gradient(0deg,rgba(180,161,132,.08) 0 1px,transparent 1px 8px),
+      #F6F1EA;
   }
+  .invite-page::before{
+    content:"";position:absolute;left:-98px;top:132px;width:138px;height:310px;z-index:1;opacity:.16;
+    background:url("assets/art/bot-eucalyptus.jpg") center/cover no-repeat;
+    filter:saturate(.42) contrast(.88);
+    mix-blend-mode:multiply;
+    transform:rotate(-8deg);
+  }
+  .invite-page::after{
+    content:"";position:absolute;left:-62px;right:-40px;bottom:-28px;height:250px;z-index:1;opacity:.42;
+    background:linear-gradient(162deg,transparent 0 23%,rgba(221,207,187,.58) 23.5% 100%);
+    clip-path:polygon(0 55%,39% 38%,62% 48%,100% 20%,100% 100%,0 100%);
+  }
+  .invite-letter{
+    padding:38px 34px 78px;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+    justify-content:flex-start;
+  }
+  .invite-letter .kicker{font-size:15px;letter-spacing:.85em;text-indent:.85em;color:#8E8679;}
+  .invite-letter .rule{width:250px;margin:18px auto 36px;}
+  .invite-letter .rule::before,.invite-letter .rule::after{width:92px;background:linear-gradient(90deg,transparent,#B7A17F);}
+  .invite-letter .rule::after{background:linear-gradient(90deg,#B7A17F,transparent);}
+  .invite-letter .rule i{width:10px;height:10px;background:#B7A17F;}
+  .invite-letter .big{
+    font-size:36px;letter-spacing:.38em;text-indent:.38em;text-align:center;margin:0 0 28px;color:#5A554E;font-weight:600;
+  }
+  .invite-copy{position:relative;z-index:3;width:100%;}
+  .invite-copy p{
+    font-size:14px;line-height:1.82;text-align:center;color:#5B554E;letter-spacing:.11em;
+    white-space:nowrap;
+  }
+  .invite-copy .gap{margin-top:18px;}
+  .invite-copy .wide{font-size:12.2px;letter-spacing:.02em;}
+  .invite-copy .sign{margin-top:22px;letter-spacing:.34em;text-indent:.34em;}
   .invite-photo{
-    margin:22px auto 0;width:54%;
-    background:#FFFDF9;padding:12px 12px 30px;
-    box-shadow:0 12px 30px rgba(92,86,78,.18);
-    transform:rotate(-2.5deg);
-    position:relative;
+    position:relative;z-index:4;left:auto;bottom:auto;width:min(42%,190px);
+    margin:34px auto 0;
+    background:#FFFDF8;padding:10px 10px 30px;
+    box-shadow:0 16px 34px rgba(92,86,78,.18);
+    transform:rotate(-4deg);
+  }
+  .invite-photo::before{
+    content:"";position:absolute;width:96px;height:30px;top:-17px;left:50%;
+    transform:translateX(-50%) rotate(2deg);
+    background:rgba(196,172,137,.45);
+    box-shadow:0 2px 10px rgba(92,86,78,.08);
+  }
+  .invite-photo::after{
+    content:"";position:absolute;right:-72px;top:50px;width:82px;height:124px;z-index:-1;opacity:.26;
+    background:
+      linear-gradient(rgba(255,253,248,.72),rgba(255,253,248,.72)),
+      url("assets/art/bot-olive.jpg") center/cover no-repeat;
+    clip-path:polygon(8% 6%,86% 0,100% 25%,91% 88%,54% 100%,6% 84%,0 34%);
+    filter:drop-shadow(0 8px 16px rgba(92,86,78,.12));
   }
   .invite-photo img{width:100%;display:block;}
   .invite-photo figcaption{
-    position:absolute;bottom:12px;left:0;right:0;text-align:center;
-    font-style:italic;font-size:12px;color:var(--ink-soft);letter-spacing:.18em;
+    position:absolute;bottom:9px;left:0;right:0;text-align:center;
+    font-style:italic;font-size:11px;color:var(--ink-soft);letter-spacing:.18em;
   }
-  .tape{
-    position:absolute;width:78px;height:24px;top:-11px;left:50%;transform:translateX(-50%) rotate(-3deg);
-    background:rgba(201,169,161,.4);border-left:1px dashed rgba(255,255,255,.65);border-right:1px dashed rgba(255,255,255,.65);
-    backdrop-filter:blur(1px);
-  }
+  .tape{display:none;}
   /* ---------- P3 拼贴画廊 ---------- */
   .gallery{position:relative;flex:1;}
   .pola{
@@ -162,7 +209,7 @@
   .page[data-idx="3"]{
     background-image:url("assets/art/p4-bg.jpg");
     background-repeat:no-repeat;
-    background-position:center calc(100% - 64px);
+    background-position:center 18px;
     background-size:100% auto;
   }
   /* ---------- P5 地点 ---------- */
@@ -197,12 +244,12 @@
   .routes .rt:nth-child(3) .tag{background:var(--rose);}
   .routes .txt{font-size:12.5px;line-height:1.6;color:var(--ink);}
   .venue-photo{
-    margin:16px auto 0;width:100%;position:relative;
+    margin:16px auto 0;width:88%;position:relative;
     background:#FFFDF9;padding:10px 10px 30px;
     box-shadow:0 12px 30px rgba(92,86,78,.2);
     transform:rotate(-1deg);
   }
-  .venue-photo img{width:100%;height:auto;display:block;}
+  .venue-photo img{width:100%;height:190px;object-fit:cover;object-position:center 44%;display:block;}
   .venue-photo figcaption{
     position:absolute;bottom:9px;left:0;right:0;text-align:center;
     font-style:italic;font-size:12px;color:var(--ink-soft);letter-spacing:.18em;
@@ -288,9 +335,17 @@
   }
   /* 矮屏进一步压缩(≤740px 高,如 iPhone SE) */
   @media(max-height:740px){
-    .invite-letter p{font-size:14px;line-height:1.85;}
-    .invite-letter .big{font-size:22px;margin:4px 0 10px;}
-    .invite-photo{width:44%;margin-top:14px;}
+    .invite-letter{padding-top:24px;}
+    .invite-letter .kicker{font-size:12px;letter-spacing:.72em;text-indent:.72em;}
+    .invite-letter .rule{margin:12px auto 22px;}
+    .invite-letter .big{font-size:29px;margin:0 0 18px;}
+    .invite-copy p{font-size:12px;line-height:1.5;letter-spacing:.06em;}
+    .invite-copy .gap{margin-top:12px;}
+    .invite-copy .wide{font-size:10.8px;letter-spacing:0;}
+    .invite-copy .sign{margin-top:14px;}
+    .invite-photo{width:38%;margin-top:26px;padding:8px 8px 23px;}
+    .invite-page::before{top:110px;width:120px;height:270px;left:-88px;}
+    .page[data-idx="3"]{background-position:center 10px;}
     .gallery .pola.p1{width:44%;}
     .gallery .pola.p2{width:41%;}
     .gallery .pola.p3{width:43%;top:49%;}
@@ -307,14 +362,25 @@
     .routes .rt{padding:6px 2px;}
     .routes .txt{font-size:12px;}
     .map-btn{margin-top:12px;}
-    .venue-photo{margin-top:8px;padding:7px 7px 22px;}
+    .venue-photo{margin-top:8px;width:76%;padding:7px 7px 22px;}
+    .venue-photo img{height:132px;}
   }
   /* 极矮屏(≤700px 高):P5 进一步压缩以容纳横版照片 */
   @media(max-height:700px){
     .venue-card{padding:12px 14px;}
     .map-btn{margin-top:10px;padding:8px 22px;}
     .routes .rt{padding:5px 2px;}
-    .venue-photo{margin-top:4px;padding:5px 5px 17px;transform:rotate(0);}
+    .venue-photo{margin-top:4px;width:72%;padding:5px 5px 24px;transform:rotate(0);}
+    .venue-photo img{height:104px;}
+    .invite-letter{padding-top:18px;}
+    .invite-letter .rule{margin-bottom:18px;}
+    .invite-letter .big{font-size:27px;margin-bottom:14px;}
+    .invite-copy p{font-size:11.4px;line-height:1.42;}
+    .invite-copy .gap{margin-top:9px;}
+    .invite-copy .wide{font-size:10.4px;}
+    .invite-copy .sign{margin-top:10px;}
+    .invite-photo{width:36%;margin-top:22px;}
+    .page[data-idx="3"]{background-position:center 4px;}
   }
   /* 高屏(≥900px 高):场地画、新人简笔画放大一档 */
   @media(min-height:900px){
@@ -325,6 +391,8 @@
   @keyframes fadein{to{opacity:1}}
   .page .inner-anim{opacity:0;transform:translateY(18px);transition:all .9s ease .35s;}
   .page.current .inner-anim{opacity:1;transform:translateY(0);}
+  .page .invite-photo.inner-anim{opacity:0;transform:translateY(18px) rotate(-4deg);}
+  .page.current .invite-photo.inner-anim{opacity:1;transform:translateY(0) rotate(-4deg);}
 </style>
 </head>
 <body>
@@ -345,16 +413,19 @@
   </section>
 
   <!-- 第2页 · 邀请文 -->
-  <section class="page" data-idx="1">
+  <section class="page invite-page" data-idx="1">
     <div class="spine"></div>
     <div class="pad invite-letter">
-      <div class="kicker kicker-en inner-anim">We Are Getting Married</div>
-      <div class="rule inner-anim"><i></i></div>
-      <div class="inner-anim">
+      <div class="invite-copy inner-anim">
         <p class="big">诚挚邀请</p>
-        <p style="margin-top:12px;">　　当你收到这份邀请，我们想与你分享一个好消息——经过一路的相知相伴，我们决定携手走进人生的新篇章。</p>
-        <p style="margin-top:12px;">　　谨定于<strong>二〇二六年十月十七日（周六）</strong>举行婚礼典礼，敬备喜宴，诚邀您携家人拨冗光临，见证我们的幸福时刻。</p>
-        <p style="text-align:right;margin-top:12px;letter-spacing:.2em;">邹铭杰 · 丁沄芷 敬邀</p>
+        <p>当您收到这份邀请，</p>
+        <p>我们想与您分享一个好消息——</p>
+        <p>经过一路的相知相伴，</p>
+        <p>我们决定携手走进人生的新篇章。</p>
+        <p class="gap">谨定于二〇二六年十月十七日（周六）</p>
+        <p>举行婚礼典礼，敬备喜宴，</p>
+        <p class="wide">诚邀您携家人拨冗光临，见证我们的幸福时刻。</p>
+        <p class="sign">邹铭杰 · 丁沄芷 敬邀</p>
       </div>
       <figure class="invite-photo inner-anim">
         <span class="tape"></span>
@@ -402,7 +473,7 @@
           <div class="rt"><span class="tag">地铁</span><span class="txt">请从「博览中心7号门」步行进入</span></div>
           <div class="rt"><span class="tag">网约车</span><span class="txt">请定位「国际博览中心」2号门进入</span></div>
         </div>
-        <figure class="venue-photo"><img src="assets/art/venue-dome-wide.jpg" alt="会场水彩"><figcaption>our venue</figcaption></figure>
+        <figure class="venue-photo"><img src="assets/art/venue-dome-wide.png" alt="会场水彩"><figcaption>our venue</figcaption></figure>
       </div>
     </div>
   </section>
